@@ -1,31 +1,39 @@
-# DATA 534 Group 8: Code of Conduct
-by Matthew Angoh, Shayla Tran and Zerui Zhang
-
-***
+# Code of Conduct for DATA534_PROJECT_GROUP8
 
 ## Introduction
 
-This document outlines the code of conduct for team members involved in our projects. It establishes a framework of mutual respect, collaboration, and effective communication. By adhering to these principles, we aim to foster a positive and productive working environment.
+This document provides community guidelines for contributing to the [Project Name] on GitHub. It's designed to create a welcoming and respectful environment for collaboration. By participating in this project, you agree to abide by its terms.
 
-## 1. Communication
+## Our Standards
 
-- **Open Dialogue**: Team members are encouraged to communicate their concerns and ideas freely, utilizing Slack or in-person meetings. Communication should occur at times convenient to both parties involved.
-- **Respect for Time**: Everyone should respect each other’s time and availability. Efforts should be made to accommodate each other's schedules when planning discussions or meetings.
+- **Open and Respectful Communication**: We value diverse opinions and perspectives. Contributors are expected to interact respectfully with others, both within the project community and in related communities.
+  
+- **Inclusivity**: We are committed to creating a friendly and inclusive environment for all, regardless of background, identity, or level of experience. 
 
-## 2. Collaboration and Support
+- **Collaboration**: We encourage contributors to openly share ideas, raise issues, contribute code, provide feedback, and improve documentation. Every contribution is valuable and should be treated with respect.
 
-- **Encouraging Transparency**: Team members are encouraged to share their ideas openly and honestly. This transparency fosters trust and leads to more innovative and effective solutions.
-- **Active Listening**: Listen attentively to others before offering input. Understanding the context and perspective of others is crucial for effective teamwork.
-- **Problem-Solving**: When communicating problems, team members should strive to propose solutions. However, it is also important to be transparent if one cannot suggest a solution, allowing the team to collaborate on finding one.
-- **Mutual Support**: Team members should offer help to one another and provide support throughout the project. This includes sharing knowledge, resources, and lending a hand when others are in need.
+## Expectations
 
-## 3. Professionalism and Respect
+- **Use Welcoming Language**: Refrain from using derogatory comments, personal attacks, or trolling. Emphasize what is best for the community and the project.
 
-- **Respectful Interaction**: All interactions should be conducted with professionalism and respect. Disagreements should be handled constructively, focusing on issues rather than personal attributes.
-- **Accountability and Responsibility**: Each team member is accountable for their actions and should take responsibility for their contributions to the project.
+- **Be Respectful of Different Viewpoints and Experiences**: Gracefully accept constructive criticism and be open to learning from others' experiences.
 
-## 4. Compliance and Reporting
+- **Show Courtesy and Respect**: Understand different perspectives and experiences. Treat others as you wish to be treated.
 
-- **Adherence to Policies**: Team members should adhere to all applicable organizational policies and guidelines.
+## Responsibilities
 
-By following these guidelines, we aim to create a collaborative, respectful, and productive environment for all team members. Adherence to this code of conduct is essential for the success of our projects and the professional growth of each team member.
+- **Reporting Issues**: If you experience or witness unacceptable behavior, report it to the project maintainers. All complaints will be reviewed and investigated and will result in a response deemed necessary and appropriate to the circumstances.
+
+- **Maintainer Commitments**: Project maintainers are responsible for clarifying standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to instances of unacceptable behavior.
+
+- **Scope**: This Code of Conduct applies both within project spaces and in public spaces when an individual is representing the project or its community.
+
+## Conflict Resolution
+
+- **Conflict Handling**: In the case of conflicts, maintainers will follow the community guidelines to resolve the conflict by understanding different perspectives and finding common ground.
+
+## Conclusion
+
+Adherence to this Code of Conduct is essential in maintaining a welcoming and inclusive environment. By contributing to this project, you agree to uphold these standards.
+
+*This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/), version 2.0.*
