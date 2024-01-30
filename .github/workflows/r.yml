@@ -18,7 +18,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ${{ env.R_LIBS_USER }}
-        key: ${{ runner.os }}-r-${{ hashFiles('../../DESCRIPTION') }}
+        key: ${{ runner.os }}-r-${{ hashFiles(github.workspace + '/DESCRIPTION') }}
     
     # For now we are manually installing dependencies, but we should use description later
     - name: Install remotes package
