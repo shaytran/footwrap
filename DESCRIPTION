@@ -1,0 +1,11 @@
+Package: MyPackage
+Type: Package
+Version: 0.1.0
+Title: What the Package Does
+Description: More about what it does
+Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
+License: What license it uses
+Encoding: UTF-8
+LazyData: true
+Imports:
+  httr
