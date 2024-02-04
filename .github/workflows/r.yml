@@ -51,24 +51,29 @@ jobs:
     - name: Setup R
       uses: r-lib/actions/setup-r@v2
 
+    - name: Find R library path
+      id: r-lib-path
+      run: echo "::set-output name=libpath::$(Rscript -e '.libPaths()[1]')"
+
     - name: Cache R packages
       uses: actions/cache@v2
       with:
-        path: ${{ env.R_LIBS_USER }}
-        key: ${{ runner.os }}-r-${{ hashFiles('**/DESCRIPTION') }}
+        path: ${{ steps.r-lib-path.outputs.libpath }}
+        key: ${{ runner.os }}-r-${{ hashFiles('**/DESCRIPTION') }}-2024-02-04
         restore-keys: ${{ runner.os }}-r-
 
     - name: Install dependencies
       run: |
-        Rscript -e 'install.packages("remotes")'
+        Rscript -e 'install.packages("remotes", repos = "http://cran.rstudio.com")'
         Rscript -e 'remotes::install_deps(dependencies = TRUE, repos = "http://cran.rstudio.com")'
-        Rscript -e 'install.packages("httr", repos = "http://cran.rstudio.com")' # Explicitly install httr
-        Rscript -e 'install.packages("ggplot2", repos = "http://cran.rstudio.com")' 
-        Rscript -e 'install.packages("jsonlite", repos = "http://cran.rstudio.com")' 
-        Rscript -e 'install.packages("tidyverse", repos = "http://cran.rstudio.com")' 
+        Rscript -e 'install.packages(c("httr", "ggplot2", "jsonlite", "tidyverse"), repos = "http://cran.rstudio.com")'
 
     - name: Install the footwrap package
-      run: R CMD INSTALL footwrap
+      run: R CMD INSTALL --library=${{ steps.r-lib-path.outputs.libpath }} footwrap
+
+    - name: Run tests
+      run: Rscript -e 'testthat::test_dir("footwrap/tests/testthat")'
+
 
     - name: Run tests
       run: Rscript -e 'testthat::test_dir("footwrap/tests/testthat")'
