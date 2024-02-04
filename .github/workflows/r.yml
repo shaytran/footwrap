@@ -38,6 +38,8 @@ name: R CI
 
 on:
   push:
+      branches:
+          - shayla
 
 jobs:
   run-tests:
