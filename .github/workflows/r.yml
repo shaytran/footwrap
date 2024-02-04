@@ -58,7 +58,7 @@ jobs:
     - name: Cache R packages
       uses: actions/cache@v2
       with:
-        path: ${{ steps.r-lib-path.outputs.libpath }}
+        path: ${{ env.R_LIB_PATH }}
         key: ${{ runner.os }}-r-${{ hashFiles('**/DESCRIPTION') }}-2024-02-04
         restore-keys: ${{ runner.os }}-r-
 
