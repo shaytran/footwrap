@@ -1,4 +1,5 @@
 library(testthat)
+library(footwrap)
 
 # Test Cases
 test_that("GetBiggestVenues returns correct ggplot object", {
