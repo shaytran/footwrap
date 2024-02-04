@@ -38,8 +38,8 @@ name: R CI
 
 on:
   push:
-      branches:
-          - shayla
+    branches:
+      - shayla
 
 jobs:
   run-tests:
@@ -63,11 +63,13 @@ jobs:
         Rscript -e 'install.packages("remotes")'
         Rscript -e 'remotes::install_deps(dependencies = TRUE)'
 
-    - name: List directory structure
+    - name: Debug file structure
       run: |
         pwd
+        echo "Listing all files from root directory for debugging:"
         find . -type f
-        ls tests/testthat
+        echo "Listing tests/testthat directory contents:"
+        ls -R tests/testthat
 
     - name: Run tests
       run: |
