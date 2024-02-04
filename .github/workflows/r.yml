@@ -53,7 +53,7 @@ jobs:
 
     - name: Find R library path
       id: r-lib-path
-      run: echo "::set-output name=libpath::$(Rscript -e '.libPaths()[1]')"
+      run: echo "R_LIB_PATH=$(Rscript -e 'cat(.libPaths()[1])')" >> $GITHUB_ENV
 
     - name: Cache R packages
       uses: actions/cache@v2
@@ -69,7 +69,7 @@ jobs:
         Rscript -e 'install.packages(c("httr", "ggplot2", "jsonlite", "tidyverse"), repos = "http://cran.rstudio.com")'
 
     - name: Install the footwrap package
-      run: R CMD INSTALL --library=${{ steps.r-lib-path.outputs.libpath }} footwrap
+      run: R CMD INSTALL --library=$R_LIB_PATH footwrap
 
     - name: Run tests
       run: Rscript -e 'testthat::test_dir("footwrap/tests/testthat")'
