@@ -1,7 +1,4 @@
 library(testthat)
-library(jsonlite)
-library(ggplot2)
-library(dplyr)
 
 # Test Cases
 test_that("GetBiggestVenues returns correct ggplot object", {
