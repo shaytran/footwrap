@@ -32,10 +32,12 @@ jobs:
     
     # Placeholder for now
     - name: Run tests
-      run: Rscript -e 'testthat::test_dir("footwrap/tests/testthat")'
-          # echo "Placeholder for running tests"
-          # Replace the above echo command with actual test execution when ready
-          # testthat::test_dir("tests/testthat")
+      run: |
+        Rscript -e 'source("footwrap/R/shay_script.R")'
+        Rscript -e 'testthat::test_dir("footwrap/tests/testthat")'
+      # echo "Placeholder for running tests"
+        # Replace the above echo command with actual test execution when ready
+        # testthat::test_dir("tests/testthat")
 
 # name: R CI
 
