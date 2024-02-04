@@ -68,10 +68,11 @@ jobs:
         pwd
         echo "Listing all files from root directory for debugging:"
         find . -type f
-        echo "Listing tests/testthat directory contents:"
-        ls -R tests/testthat
+        echo "Listing footwrap/tests/testthat directory contents:"
+        ls -R footwrap/tests/testthat
 
     - name: Run tests
       run: |
-        Rscript -e 'testthat::test_dir("tests/testthat")'
+        Rscript -e 'testthat::test_dir("footwrap/tests/testthat")'
+
 
