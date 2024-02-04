@@ -61,18 +61,11 @@ jobs:
     - name: Install dependencies
       run: |
         Rscript -e 'install.packages("remotes")'
-        Rscript -e 'remotes::install_deps(dependencies = TRUE)'
+        Rscript -e 'remotes::install_deps(dependencies = TRUE, path = "footwrap/")'
 
-    - name: Debug file structure
-      run: |
-        pwd
-        echo "Listing all files from root directory for debugging:"
-        find . -type f
-        echo "Listing footwrap/tests/testthat directory contents:"
-        ls -R footwrap/tests/testthat
+    - name: Install the footwrap package
+      run: R CMD INSTALL footwrap
 
     - name: Run tests
-      run: |
-        Rscript -e 'testthat::test_dir("footwrap/tests/testthat")'
-
+      run: Rscript -e 'testthat::test_dir("footwrap/tests/testthat")'
 
