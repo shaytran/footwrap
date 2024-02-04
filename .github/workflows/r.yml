@@ -63,6 +63,12 @@ jobs:
         Rscript -e 'install.packages("remotes")'
         Rscript -e 'remotes::install_deps(dependencies = TRUE)'
 
+    - name: List directory structure
+      run: |
+        pwd
+        find . -type f
+        ls tests/testthat
+
     - name: Run tests
       run: |
         Rscript -e 'testthat::test_dir("tests/testthat")'
