@@ -9,9 +9,15 @@ library(gt)
 library(roxygen2)
 
 
-# Get league Id by name
-getLeagueId <- function(league_name, apikey) {
-  url <- "https://v3.football.api-sports.io/leagues"
+########## New version of getLeagueId
+# Helper function: get league Id by name
+getLeagueId <- function(league, apikey) {
+  
+  # Construct the URL with query parameters
+  url <- paste0("https://v3.football.api-sports.io/leagues?",
+                "name=", tolower(gsub(" ", "+", league, fixed = TRUE)))
+  
+  # Set the headers
   headers <- c(
     'x-rapidapi-host' = 'v3.football.api-sports.io',
     'x-rapidapi-key' = apikey
@@ -19,41 +25,24 @@ getLeagueId <- function(league_name, apikey) {
   
   # Make the GET request
   response <- GET(url, add_headers(.headers=headers))
-  raw_data <- content(response, "text", encoding = 'UTF-8')
-  jsonData <- fromJSON(raw_data)
-  response_data <- jsonData$response
   
-  # Initialize an empty list for storage
-  league_list <- list()
-  
-  # Populate the list in the loop
-  for (i in seq_along(response_data)) {
-    league_id <- response_data[[i]]$league$id
-    country_name <- response_data[[i]]$country$name
+  # Check if the request was successful
+  if (status_code(response) == 200) {
+    # Parse the response body from JSON
+    raw_data <- content(response, "text", encoding = 'UTF-8')
+    jsonData <- fromJSON(raw_data)
+    df <- data.frame(jsonData$response)
+    df <- df[, -ncol(df)]
     
-    # Create a temporary dataframe for the current league
-    temp_df <- data.frame(id = league_id, country = country_name, stringsAsFactors = FALSE)
-    
-    # If the league name already exists, bind the rows to the existing dataframe
-    if (!is.null(league_list[[response_data[[i]]$league$name]])) {
-      league_list[[response_data[[i]]$league$name]] <- rbind(league_list[[response_data[[i]]$league$name]], temp_df)
-    } else {
-      # Otherwise, create a new entry with the league name as the key
-      league_list[[response_data[[i]]$league$name]] <- temp_df
-    }
-  }
-  
-  # Return the dataframe for the specified league name, or NULL if not found
-  if (!is.null(league_list[[league_name]])) {
-    return(league_list[[league_name]])
+    return(df)
   } else {
-    return(NULL)
+    stop("Request failed with status code ", status_code(response))
   }
 }
-
 # Example Usage
 getLeagueId("Premier League", "c2fc2c53bc1c1a2a3b15124124996cbd")
 getLeagueId("World Cup", "c2fc2c53bc1c1a2a3b15124124996cbd")
+
 
 
 
@@ -79,7 +68,7 @@ getTeamId <- function(team, apikey) {
     # Parse the response body from JSON
     raw_data <- content(response, "text", encoding = 'UTF-8')
     jsonData <- fromJSON(raw_data)
-    team_id <- jsonData$response[[1]]$team$id
+    team_id <- jsonData$response$team$id
     
     return(team_id)
   } else {
@@ -133,6 +122,10 @@ getTeamStatistics <- function(league, season, team, apikey) {
     raw_data <- content(response, "text", encoding = 'UTF-8')
     jsonData <- fromJSON(raw_data)
     stats <- jsonData$response
+    
+    if (length(stats) == 0) {
+      return(NULL)
+    }
     
     # Constructing the data frame with fixtures and goals
     df <- data.frame(
@@ -234,7 +227,7 @@ searchPlayer <- function(name, team, apikey) {
     jsonData <- fromJSON(raw_data)
     
     # Convert response to data frame
-    player_info <- data.frame(jsonData$response[[1]]$player)
+    player_info <- data.frame(jsonData$response$player)
     player_info <- t(player_info)
     df <- as.data.frame(player_info, stringsAsFactors = FALSE)
     
@@ -297,7 +290,7 @@ getPlayerStatistics <- function(id, season, apikey) {
   if (status_code(response) == 200) {
     # Parse the response body from JSON
     jsonData <- fromJSON(content(response, "text", encoding = 'UTF-8'))
-    stats <- jsonData$response[[1]]$statistics
+    stats <- jsonData$response$statistics
     
     statistics_list <- list()
     # Loop through each item in the `stats` list
@@ -362,6 +355,11 @@ getPlayerStatistics(276, 2019, 'c2fc2c53bc1c1a2a3b15124124996cbd')
 
 # test
 url <- "https://v3.football.api-sports.io/players?team=85&search=neymar"
+
+url <- "https://v3.football.api-sports.io/teams?name=manchester+united"
+
+url <- "https://v3.football.api-sports.io/teams/statistics?league=39&team=33&season=2019"
+
 headers <- c(
   'x-rapidapi-host' = 'v3.football.api-sports.io',
   'x-rapidapi-key' = 'c2fc2c53bc1c1a2a3b15124124996cbd'
@@ -370,3 +368,4 @@ response <- GET(url, add_headers(.headers=headers))
 raw_data <- content(response, "text", encoding = 'UTF-8')
 jsonData <- fromJSON(raw_data)
 response <- jsonData$response
+response <- data.frame(response)

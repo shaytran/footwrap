@@ -4,63 +4,64 @@ library(httr)
 apikey <- 'c2fc2c53bc1c1a2a3b15124124996cbd'
 
 # locate the script
-source("/Users/zeruizhang/DATA534_Project_Group8/footwrap/R/zerui_script.R")
+source("/Users/zeruizhang/Downloads/zerui_script.R")
 
 test_that("getLeagueId returns correct league ID for known league name", {
   league_name <- "Premier League"
   result <- getLeagueId(league_name, apikey)
   expect_true(is.list(result))
-  expect_true(length(result) > 0)
+  expect_true(nrow(result) > 0)
 })
 
 test_that("getLeagueId handles invalid league names gracefully", {
   league_name <- "Nonexistent League"
   result <- getLeagueId(league_name, apikey)
-  expect_equal(length(result), NULL) 
+  expect_equal(nrow(result), 0)
 })
 
 test_that("getLeagueId handles empty league name", {
   league_name <- ""
   result <- getLeagueId(league_name, apikey)
-  expect_equal(length(result), NULL) 
+  expect_equal(nrow(result), 0)
 })
 
 
 
 test_that("getTeamId returns correct team ID for known team name", {
-  team_name <- "Liverpool"
+  team_name <- "Manchester United"
   result <- getTeamId(team_name, apikey)
-  expect_true(is.list(result))
-  expect_true(length(result) > 0)
+  expect_true(is.numeric(result))
 })
 
 test_that("getTeamId handles invalid team names gracefully", {
   team_name <- "Nonexistent Team"
   result <- getTeamId(team_name, apikey)
-  expect_equal(length(result), 0)
+  expect_null(result)
 })
 
 test_that("getTeamId handles empty team name", {
   team_name <- ""
   result <- getTeamId(team_name, apikey)
+  expect_null(result)
+})
+
+
+
+test_that("getTeamStatistics returns statistics for a given team", {
+  league_id <- 39
+  season <- 2019
+  team <- "Manchester United"
+  result <- getTeamStatistics(league_id, season, team, apikey)
+  expect_is(result, "gt_tbl")
+  expect_true(!is.null(result))
+})
+
+test_that("getTeamStatistics handles invalid league IDs gracefully", {
+  league_id <- -1
+  season <- 2019
+  team <- "Manchester United"
+  result <- getTeamStatistics(league_id, season, team, apikey)
   expect_equal(length(result), 0)
-})
-
-
-
-test_that("getTeamStatistics returns statistics for a given team ID", {
-  team_id <- 39
-  season <- 2021
-  result <- getTeamStatistics(team_id, season, apikey)
-  expect_is(result, "list")
-  expect_true(!is.null(result$statistics))
-})
-
-test_that("getTeamStatistics handles invalid team IDs gracefully", {
-  team_id <- -1 
-  season <- 2021
-  result <- getTeamStatistics(team_id, season, apikey)
-  expect_null(result$statistics) 
 })
 
 test_that("getTeamStatistics handles requests for future seasons", {
