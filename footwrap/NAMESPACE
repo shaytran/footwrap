@@ -3,4 +3,3 @@
 export(CompareTrophies)
 export(GetBiggestVenues)
 export(GetCoachInfo)
-export(safeApiCall)
