@@ -1,4 +1,6 @@
 library(testthat)
+library(devtools)
+load_all("footwrap/")
 
 # Test Cases
 test_that("GetBiggestVenues returns correct ggplot object", {

@@ -15,7 +15,11 @@ Imports:
     jsonlite,
     dplyr,
     tidyverse,
-    purrr,
-    readr
+    devtools,
+    gt,
+    roxygen2
 Suggests:
+    knitr,
+    rmarkdown,
     testthat
+VignetteBuilder: knitr
