@@ -1,6 +1,6 @@
 library(testthat)
-library(devtools)
-load_all("footwrap/")
+
+source("../../R/shay_script.R")
 
 # Test Cases
 test_that("GetBiggestVenues returns correct ggplot object", {
