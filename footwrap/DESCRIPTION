@@ -15,7 +15,6 @@ Imports:
     jsonlite,
     dplyr,
     tidyverse,
-    devtools,
     gt,
     roxygen2
 Suggests:
