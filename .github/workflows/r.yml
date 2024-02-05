@@ -60,8 +60,7 @@ jobs:
     - name: Install dependencies
       run: |
         Rscript -e 'install.packages("remotes")'
-        Rscript -e 'remotes::install_deps(dependencies = TRUE)'
-        Rscript -e 'install.packages("devtools")' # Ensure devtools is installed
+        Rscript -e 'remotes::install_deps("footwrap/", dependencies = TRUE)'
 
     # Run tests
     - name: Run tests
