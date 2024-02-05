@@ -63,7 +63,7 @@ jobs:
     # Manually install specified libraries
     - name: Install specified libraries
       run: |
-        Rscript -e 'install.packages(c("httr", "tidyverse", "ggplot2", "jsonlite", "dplyr", "gt", "roxygen2"))'
+        Rscript -e 'install.packages(c("httr", "tidyverse", "ggplot2", "jsonlite", "dplyr", "gt", "roxygen2", "testthat"))'
 
     # # Install additional dependencies from DESCRIPTION
     # - name: Install dependencies from DESCRIPTION
