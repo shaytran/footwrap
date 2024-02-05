@@ -56,12 +56,19 @@ jobs:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-r-${{ hashFiles('**/DESCRIPTION') }}
 
-    # Install dependencies, including devtools
-    - name: Install dependencies
+    # Install remotes package
+    - name: Install remotes package
+      run: Rscript -e 'install.packages("remotes")'
+
+    # Manually install specified libraries
+    - name: Install specified libraries
       run: |
-        Rscript -e 'install.packages("remotes")'
-        Rscript -e 'remotes::install_deps("footwrap/", dependencies = TRUE)'
+        Rscript -e 'install.packages(c("httr", "tidyverse", "ggplot2", "jsonlite", "dplyr", "gt", "roxygen2"))'
+
+    # Install additional dependencies from DESCRIPTION
+    - name: Install dependencies from DESCRIPTION
+      run: Rscript -e 'remotes::install_deps(dependencies = TRUE)'
 
     # Run tests
     - name: Run tests
-      run: Rscript -e 'testthat::test_dir("footwrap/tests/testthat/")'
+      run: Rscript -e 'testthat::test_dir("tests/testthat/")'
