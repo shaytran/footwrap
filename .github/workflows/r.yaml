@@ -53,6 +53,7 @@ jobs:
             any::gt
             any::ggplot2
             any::roxygen2
+            any::testthat
 
 
       - name: Checkout repository
