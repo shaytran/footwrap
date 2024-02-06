@@ -1,3 +1,4 @@
+install.packages("testthat")
 library(testthat)
 
 source("../../R/shay_script.R")

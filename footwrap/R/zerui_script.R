@@ -29,6 +29,7 @@ library(gt)
 #' @export
 #' 
 getLeagueInfo <- function(league, apikey) {
+
   
   # Construct the URL with query parameters
   url <- paste0("https://v3.football.api-sports.io/leagues?",
@@ -58,7 +59,6 @@ getLeagueInfo <- function(league, apikey) {
 }
 
 
-
 #' Retrieve Team ID by Name
 #'
 #' This function queries the API Sports Football API to retrieve the ID
@@ -77,6 +77,7 @@ getLeagueInfo <- function(league, apikey) {
 #' 
 #' @export
 #' 
+
 getTeamId <- function(team, apikey) {
   
   # Construct the URL with query parameters
@@ -410,4 +411,3 @@ getPlayerStatistics <- function(id, season, apikey) {
     stop("Request failed with status code ", status_code(response))
   }
 }
-
