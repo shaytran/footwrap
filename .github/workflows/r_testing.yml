@@ -22,8 +22,10 @@ jobs:
 
       - name: Restore Renv project
         run: |
-          R -e 'if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")'
-          R -e 'renv::restore()'
+            R -e 'options(repos = c(CRAN = "https://cloud.r-project.org"))'
+            R -e 'if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")'
+            R -e 'renv::restore()'
+        
 
       - name: Run tests
         run: |
