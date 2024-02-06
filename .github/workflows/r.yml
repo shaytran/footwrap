@@ -1,0 +1,74 @@
+# name: R CI
+
+# on:
+#   push:
+
+# jobs:
+#   run-tests:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v2
+
+#     - name: Setup R
+#       uses: r-lib/actions/setup-r@v2
+
+#         # Cache R package dependencies
+#     - name: Cache R packages
+#       uses: actions/cache@v2
+#       with:
+#           path: ${{ env.R_LIBS_USER }}
+#           key: ${{ runner.os }}-r-${{ hashFiles('**/DESCRIPTION') }}
+
+#     # For now we are manually installing dependencies, but we should use description later
+#     - name: Install remotes package
+#       run: Rscript -e 'install.packages("remotes")'
+
+#     - name: Install dependencies
+#       run: Rscript -e 'remotes::install_deps()'
+
+#     # Placeholder for now
+#     - name: Run tests
+#       run: |
+#           echo "Placeholder for running tests"
+#           # Replace the above echo command with actual test execution when ready
+#           # testthat::test_dir("tests/testthat")
+
+name: R CI
+
+on:
+  push:
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup R
+      uses: r-lib/actions/setup-r@v2
+
+    # Cache R package dependencies
+    - name: Cache R packages
+      uses: actions/cache@v2
+      with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-r-${{ hashFiles('**/DESCRIPTION') }}
+
+    # Install remotes package
+    - name: Install remotes package
+      run: Rscript -e 'install.packages("remotes")'
+
+    # Manually install specified libraries
+    - name: Install specified libraries
+      run: |
+        Rscript -e 'install.packages(c("httr", "tidyverse", "ggplot2", "jsonlite", "dplyr", "gt", "roxygen2", "testthat"))'
+
+    # # Install additional dependencies from DESCRIPTION
+    # - name: Install dependencies from DESCRIPTION
+    #   run: Rscript -e 'remotes::install_deps(dependencies = TRUE)'
+
+    # Run tests
+    - name: Run tests
+      run: Rscript -e 'testthat::test_dir("footwrap/tests/testthat/")'
