@@ -23,11 +23,11 @@ library(gt)
 #'         successful. Each row represents a league, and columns include details
 #'         such as league id, name, and other relevant information provided by the API.
 #'
-#' @import httr
-#' @import jsonlite
 #' @examples
 #' league_info <- getLeagueInfo("Premier League", apikey)
-#'
+#' 
+#' @export
+#' 
 getLeagueInfo <- function(league, apikey) {
   
   # Construct the URL with query parameters
@@ -74,6 +74,8 @@ getLeagueInfo <- function(league, apikey) {
 #'
 #' @examples
 #' getTeamId("Manchester United", apikey)
+#' 
+#' @export
 #' 
 getTeamId <- function(team, apikey) {
   
@@ -222,7 +224,8 @@ getTeamStatistics <- function(league, season, team, apikey) {
 #' @export
 #'
 #' @examples
-#'   searchPlayer(name = "Ronaldo", team = "Juventus", apikey = "your_api_key_here")
+#' searchPlayer(name = "Ronaldo", team = "Juventus", apikey = "your_api_key_here")
+#' 
 searchPlayer <- function(name, team, apikey) {
   
   # Get team id by name

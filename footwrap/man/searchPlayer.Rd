@@ -22,5 +22,6 @@ Searches for information about a player by name and team using the API-Sports AP
 It retrieves the player's detailed information and displays it in a \code{gt} table format.
 }
 \examples{
-  searchPlayer(name = "Ronaldo", team = "Juventus", apikey = "your_api_key_here")
+searchPlayer(name = "Ronaldo", team = "Juventus", apikey = "your_api_key_here")
+
 }
