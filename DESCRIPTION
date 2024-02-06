@@ -13,4 +13,8 @@ Imports:
   tidyverse,
   jsonlite,
   testthat
+<<<<<<< HEAD
 RoxygenNote: 7.3.1
+=======
+
+>>>>>>> 156c350277e38b26d27b699eacd8c6ef947ecbfb
