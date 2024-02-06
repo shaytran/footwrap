@@ -23,6 +23,6 @@ using the API-Sports.io API. The result is presented in a \code{gt} table format
 including various statistics like appearances, goals, assists, and more.
 }
 \examples{
-  getPlayerStatistics(276, 2019, 'your_api_key_here')
+getPlayerStatistics(276, 2019, 'your_api_key_here')
   
 }

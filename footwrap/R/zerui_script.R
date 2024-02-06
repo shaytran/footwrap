@@ -24,7 +24,7 @@ library(gt)
 #'         such as league id, name, and other relevant information provided by the API.
 #'
 #' @examples
-#' league_info <- getLeagueInfo("Premier League", apikey)
+#' getLeagueInfo("Premier League", apikey)
 #' 
 #' @export
 #' 
@@ -199,7 +199,19 @@ getTeamStatistics <- function(league, season, team, apikey) {
       tab_header(
         title = team_name,
         subtitle = paste(league_name, league_season)
-      )
+      )  %>%
+      # Set heading background color
+      tab_options(
+        heading.background.color = "#4C5B5C" # Dark grey for heading
+      ) %>%
+      # Set body background color
+      tab_style(
+        style = list(
+          cell_fill(color = "#F5F5F5") # Light grey for body
+        ),
+        locations = cells_body(
+          columns = everything()
+        ))
     
     return(gt_table)
   } else {
@@ -224,7 +236,7 @@ getTeamStatistics <- function(league, season, team, apikey) {
 #' @export
 #'
 #' @examples
-#' searchPlayer(name = "Ronaldo", team = "Juventus", apikey = "your_api_key_here")
+#' searchPlayer("Neymar", "Paris Saint Germain", "<your_api_key>")
 #' 
 searchPlayer <- function(name, team, apikey) {
   
@@ -264,6 +276,22 @@ searchPlayer <- function(name, team, apikey) {
       ) %>%
       tab_options(
         column_labels.hidden = TRUE
+      ) %>%
+      # Set heading background color
+      tab_options(
+        heading.background.color = "#FFD700"
+      ) %>%
+      # Change font color in the table body
+      tab_style(
+        style = cell_text(color = "#1b2668"), # Example: blue font color
+        locations = cells_body(
+          columns = everything()
+        )
+      ) %>%
+      # Center text in the table body
+      tab_style(
+        style = cell_text(align = "center"),
+        locations = cells_body(columns = 2)
       )
     
     return(gt_table)
@@ -290,7 +318,7 @@ searchPlayer <- function(name, team, apikey) {
 #' @export
 #'
 #' @examples
-#'   getPlayerStatistics(276, 2019, 'your_api_key_here')
+#' getPlayerStatistics(276, 2019, 'your_api_key_here')
 #'   
 getPlayerStatistics <- function(id, season, apikey) {
   
@@ -340,7 +368,8 @@ getPlayerStatistics <- function(id, season, apikey) {
         cards_yellow = statistics$cards$yellow,
         cards_red = statistics$cards$red,
         penalty_scored = statistics$penalty$scored,
-        penalty_missed = statistics$penalty$missed
+        penalty_missed = statistics$penalty$missed,
+        rating = statistics$games$rating
         # Add more fields as needed
       )
       
@@ -353,8 +382,8 @@ getPlayerStatistics <- function(id, season, apikey) {
     df <- as.data.frame(df, stringsAsFactors = FALSE)
     
     # Creating the gt table to make the output prettier
-    player_name <- paste(jsonData$response[[1]]$player$firstname,
-                         jsonData$response[[1]]$player$lastname)
+    player_name <- paste(jsonData$response$player$firstname,
+                         jsonData$response$player$lastname)
     gt_table <- df %>%
       gt(rownames_to_stub = T) %>%
       tab_header(
@@ -363,6 +392,17 @@ getPlayerStatistics <- function(id, season, apikey) {
       ) %>%
       tab_options(
         column_labels.hidden = TRUE
+      ) %>%
+      # Set heading background color
+      tab_options(
+        heading.background.color = "#1b2668"
+      ) %>%
+      tab_style(
+        style = cell_fill(color = "#FFD700"), 
+        locations = cells_body(
+          rows = nrow(df),
+          columns = everything()
+        )
       )
     
     return(gt_table)

@@ -25,6 +25,6 @@ the request is successful. Users can use this function to obtain league ID
 for parameter in other functions.
 }
 \examples{
-league_info <- getLeagueInfo("Premier League", apikey)
+getLeagueInfo("Premier League", apikey)
 
 }
