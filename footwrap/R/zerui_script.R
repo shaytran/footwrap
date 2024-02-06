@@ -2,15 +2,10 @@
 # Load libraries
 library(httr)
 library(tidyverse)
-library(ggplot2)
 library(jsonlite)
 library(dplyr)
 library(gt)
-library(roxygen2)
 
-# Users need to set their personal API key as environment variable named "RAPID_API", 
-# then they can use this to retrieve the API key.
-apikey <- Sys.getenv("RAPID_API")
 
 #' Retrieve League Information by Name
 #'
@@ -372,3 +367,4 @@ getPlayerStatistics <- function(id, season, apikey) {
     stop("Request failed with status code ", status_code(response))
   }
 }
+
