@@ -89,6 +89,7 @@ topScorers <- getTopScorers(39, 2020, "<your_api_key>")
 ```
 
 **7. Fetching Top Assist Providers **
+
 Similarly, `getTopAssists` focuses on the creative talents in the league, fetching data about players who provided the most assists.
 ```{r}
 #Example: Premier League Top Assists in 2020
@@ -96,6 +97,7 @@ topAssists <- getTopAssists(39, 2020, "<your_api_key>")
 ```
 
 **8. Accessing Football Fixtures**
+
 With `getFootballFixtures`, users can retrieve detailed fixture lists for leagues, including match venues, dates, and scores, enabling fans and analysts to keep track of upcoming and past matches.
 
 ```{r}
@@ -104,6 +106,7 @@ fixtures <- getFootballFixtures(39, 2020, "<your_api_key>")
 ```
 
 **9. Examining League Standings**
+
 `getFootballStandings` offers a comprehensive view of the standings in any given league and season, providing insights into team performances, points, and rankings.
 ```{r}
 # Example: Viewing Premier League Standings for 2020
@@ -111,11 +114,30 @@ standings <- getFootballStandings(39, 2020, "<your_api_key>")
 ```
 
 **10. Analyzing Team Transfers **
+
 Lastly, `getTeamTransfers` delves into the transfer market, offering data on player movements across teams, which is crucial for understanding team strategies and player careers.
 ```{r}
 # Example: Checking Transfers for Manchester United
 transfers <- getTeamTransfers(33, "<your_api_key>")
 ```
+
+**11. Retrieve Player Statistics**
+
+Utilize `getPlayerStatistics` to obtain an in-depth analysis of a player's performance across various metrics for a specified season, presented in a detailed gt table format.
+```{r}
+# Example: Retrieve statistics for a player (ID: 276) for the 2019 season
+getPlayerStatistics(276, 2019, "<your_api_key>")
+```
+
+**12. Retrieve League Information by Name**
+
+Use `getLeagueInfo` to effortlessly access details about any football league, including its ID and relevant attributes, by specifying its name, showcased in a concise dataframe format.
+
+```{r}
+# Example: Retrieve information about the Premier League
+getLeagueInfo("Premier League", "<your_api_key>")
+```
+
 
 
 #####Conclusion

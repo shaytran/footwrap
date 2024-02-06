@@ -9,13 +9,8 @@ Encoding: UTF-8
 LazyData: true
 Imports:
   httr,
-<<<<<<< HEAD
-  ggplot2
-Suggests:
-  testthat
-=======
   ggplot2,
   tidyverse,
   jsonlite,
   testthat
->>>>>>> 3e05c135b418e1b4abe41a8fb35fafdc592ff50a
+RoxygenNote: 7.3.1
