@@ -12,7 +12,11 @@ library(gt)
 #' This function queries the API Sports Football API to retrieve information
 #' about a football league by its given name. It constructs a query, sends a
 #' GET request to the API, and returns a dataframe with league details if
+<<<<<<< HEAD
+#' the request is successful. Users can use this function to obtain league ID
+=======
 #' the request is successful. Users can use this function to obtain league ID 
+>>>>>>> 156c350277e38b26d27b699eacd8c6ef947ecbfb
 #' for parameter in other functions.
 #'
 #' @param league A string specifying the name of the league to be queried.
@@ -25,25 +29,34 @@ library(gt)
 #'
 #' @examples
 #' getLeagueInfo("Premier League", apikey)
+<<<<<<< HEAD
+#'
+#' @export
+#'
+getLeagueInfo <- function(league, apikey) {
+
+
+=======
 #' 
 #' @export
 #' 
 getLeagueInfo <- function(league, apikey) {
 
   
+>>>>>>> 156c350277e38b26d27b699eacd8c6ef947ecbfb
   # Construct the URL with query parameters
   url <- paste0("https://v3.football.api-sports.io/leagues?",
                 "name=", tolower(gsub(" ", "+", league, fixed = TRUE)))
-  
+
   # Set the headers
   headers <- c(
     'x-rapidapi-host' = 'v3.football.api-sports.io',
     'x-rapidapi-key' = apikey
   )
-  
+
   # Make the GET request
   response <- GET(url, add_headers(.headers=headers))
-  
+
   # Check if the request was successful
   if (status_code(response) == 200) {
     # Parse the response body from JSON
@@ -51,7 +64,7 @@ getLeagueInfo <- function(league, apikey) {
     jsonData <- fromJSON(raw_data)
     df <- data.frame(jsonData$response)
     df <- df[, -ncol(df)]
-    
+
     return(df)
   } else {
     stop("Request failed with status code ", status_code(response))
@@ -74,32 +87,38 @@ getLeagueInfo <- function(league, apikey) {
 #'
 #' @examples
 #' getTeamId("Manchester United", apikey)
+<<<<<<< HEAD
+#'
+#' @export
+#'
+=======
 #' 
 #' @export
 #' 
+>>>>>>> 156c350277e38b26d27b699eacd8c6ef947ecbfb
 
 getTeamId <- function(team, apikey) {
-  
+
   # Construct the URL with query parameters
   url <- paste0("https://v3.football.api-sports.io/teams?",
                 "name=", tolower(gsub(" ", "+", team, fixed = TRUE)))
-  
+
   # Set the headers
   headers <- c(
     'x-rapidapi-host' = 'v3.football.api-sports.io',
     'x-rapidapi-key' = apikey
   )
-  
+
   # Make the GET request
   response <- GET(url, add_headers(.headers=headers))
-  
+
   # Check if the request was successful
   if (status_code(response) == 200) {
     # Parse the response body from JSON
     raw_data <- content(response, "text", encoding = 'UTF-8')
     jsonData <- fromJSON(raw_data)
     team_id <- jsonData$response$team$id
-    
+
     return(team_id)
   } else {
     stop("Request failed with status code ", status_code(response))
@@ -116,61 +135,61 @@ getTeamId <- function(team, apikey) {
 #' @param season The season year.
 #' @param team The team's name.
 #' @param apikey Your API key for API-Sports.io.
-#' 
+#'
 #' @return Data frame with statistics: Played, Wins, Draws, Loses, Goals For/Against, and Averages.
-#' 
+#'
 #' @examples
 #' getTeamStatistics(39, 2019, "Manchester United", "<your_api_key>")
-#' 
+#'
 #' @export
 getTeamStatistics <- function(league, season, team, apikey) {
-  
+
   # Get team id by team name
   team_id <- getTeamId(team, apikey)
-  
+
   # Construct the URL with query parameters
   url <- paste0("https://v3.football.api-sports.io/teams/statistics?",
                 "league=", league,
                 "&season=", season,
                 "&team=", team_id)
-  
+
   # Set the headers
   headers <- c(
     'x-rapidapi-host' = 'v3.football.api-sports.io',
     'x-rapidapi-key' = apikey
   )
-  
+
   # Make the GET request
   response <- GET(url, add_headers(.headers=headers))
-  
+
   # Check if the request was successful
   if (status_code(response) == 200) {
     # Parse the response body from JSON
     raw_data <- content(response, "text", encoding = 'UTF-8')
     jsonData <- fromJSON(raw_data)
     stats <- jsonData$response
-    
+
     if (length(stats) == 0) {
       return(NULL)
     }
-    
+
     # Constructing the data frame with fixtures and goals
     df <- data.frame(
       Category = c("Played", "Wins", "Draws", "Loses", "Goals For", "Goals Against", "Goals For Avg", "Goals Against Avg"),
       Home = c(
-        stats$fixtures$played$home, 
-        stats$fixtures$wins$home, 
-        stats$fixtures$draws$home, 
-        stats$fixtures$loses$home, 
-        stats$goals$`for`$total$home, 
+        stats$fixtures$played$home,
+        stats$fixtures$wins$home,
+        stats$fixtures$draws$home,
+        stats$fixtures$loses$home,
+        stats$goals$`for`$total$home,
         stats$goals$against$total$home,
         stats$goals$`for`$average$home,
         stats$goals$against$average$home
       ),
       Away = c(
-        stats$fixtures$played$away, 
-        stats$fixtures$wins$away, 
-        stats$fixtures$draws$away, 
+        stats$fixtures$played$away,
+        stats$fixtures$wins$away,
+        stats$fixtures$draws$away,
         stats$fixtures$loses$away,
         stats$goals$`for`$total$away,
         stats$goals$against$total$away,
@@ -178,9 +197,9 @@ getTeamStatistics <- function(league, season, team, apikey) {
         stats$goals$against$average$away
       ),
       Total = c(
-        stats$fixtures$played$total, 
-        stats$fixtures$wins$total, 
-        stats$fixtures$draws$total, 
+        stats$fixtures$played$total,
+        stats$fixtures$wins$total,
+        stats$fixtures$draws$total,
         stats$fixtures$loses$total,
         stats$goals$`for`$total$total,
         stats$goals$against$total$total,
@@ -188,12 +207,12 @@ getTeamStatistics <- function(league, season, team, apikey) {
         stats$goals$against$average$total
       )
     )
-    
+
     # Extract title content
     team_name <- stats$team$name
     league_name <- stats$league$name
     league_season <- stats$league$season
-    
+
     # Create gt table to get a prettier output
     gt_table <- df %>%
       gt() %>%
@@ -213,7 +232,11 @@ getTeamStatistics <- function(league, season, team, apikey) {
         locations = cells_body(
           columns = everything()
         ))
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> 156c350277e38b26d27b699eacd8c6ef947ecbfb
     return(gt_table)
   } else {
     stop("Request failed with status code ", status_code(response))
@@ -238,36 +261,40 @@ getTeamStatistics <- function(league, season, team, apikey) {
 #'
 #' @examples
 #' searchPlayer("Neymar", "Paris Saint Germain", "<your_api_key>")
+<<<<<<< HEAD
+#'
+=======
 #' 
+>>>>>>> 156c350277e38b26d27b699eacd8c6ef947ecbfb
 searchPlayer <- function(name, team, apikey) {
-  
+
   # Get team id by name
   team_id <- getTeamId(team, apikey)
   # Construct the URL with query parameters
   url <- paste0("https://v3.football.api-sports.io/players?",
                 "team=", team_id,
                 "&search=", tolower(name))
-  
+
   # Set the headers
   headers <- c(
     'x-rapidapi-host' = 'v3.football.api-sports.io',
     'x-rapidapi-key' = apikey
   )
-  
+
   # Make the GET request
   response <- GET(url, add_headers(.headers=headers))
-  
+
   # Check if the request was successful
   if (status_code(response) == 200) {
     # Parse the response body from JSON
     raw_data <- content(response, "text", encoding = 'UTF-8')
     jsonData <- fromJSON(raw_data)
-    
+
     # Convert response to data frame
     player_info <- data.frame(jsonData$response$player)
     player_info <- t(player_info)
     df <- as.data.frame(player_info, stringsAsFactors = FALSE)
-    
+
     # Creating the gt table to make the output prettier
     gt_table <- df %>%
       gt(rownames_to_stub = T) %>%
@@ -294,7 +321,7 @@ searchPlayer <- function(name, team, apikey) {
         style = cell_text(align = "center"),
         locations = cells_body(columns = 2)
       )
-    
+
     return(gt_table)
   } else {
     stop("Request failed with status code ", status_code(response))
@@ -320,35 +347,39 @@ searchPlayer <- function(name, team, apikey) {
 #'
 #' @examples
 #' getPlayerStatistics(276, 2019, 'your_api_key_here')
+<<<<<<< HEAD
+#'
+=======
 #'   
+>>>>>>> 156c350277e38b26d27b699eacd8c6ef947ecbfb
 getPlayerStatistics <- function(id, season, apikey) {
-  
+
   # Construct the URL with query parameters
   url <- paste0("https://v3.football.api-sports.io/players?",
                 "id=", id,
                 "&season=", season
-                )
-  
+  )
+
   # Set the headers
   headers <- c(
     'x-rapidapi-host' = 'v3.football.api-sports.io',
     'x-rapidapi-key' = apikey
   )
-  
+
   # Make the GET request
   response <- GET(url, add_headers(.headers=headers))
-  
+
   # Check if the request was successful
   if (status_code(response) == 200) {
     # Parse the response body from JSON
     jsonData <- fromJSON(content(response, "text", encoding = 'UTF-8'))
     stats <- jsonData$response$statistics
-    
+
     statistics_list <- list()
     # Loop through each item in the `stats` list
     for (i in 1:length(stats)) {
       statistics <- stats[[i]]
-      
+
       # Create a tibble for the current set of statistics
       statistics_tbl <- tibble(
         team_name = statistics$team$name,
@@ -373,15 +404,15 @@ getPlayerStatistics <- function(id, season, apikey) {
         rating = statistics$games$rating
         # Add more fields as needed
       )
-      
+
       # Append the current tibble to the list
       statistics_list[[i]] <- statistics_tbl
     }
-    
+
     # Combine all tibbles in the list into one dataframe
     df <- t(bind_rows(statistics_list))
     df <- as.data.frame(df, stringsAsFactors = FALSE)
-    
+
     # Creating the gt table to make the output prettier
     player_name <- paste(jsonData$response$player$firstname,
                          jsonData$response$player$lastname)
@@ -399,13 +430,17 @@ getPlayerStatistics <- function(id, season, apikey) {
         heading.background.color = "#1b2668"
       ) %>%
       tab_style(
+<<<<<<< HEAD
+        style = cell_fill(color = "#FFD700"),
+=======
         style = cell_fill(color = "#FFD700"), 
+>>>>>>> 156c350277e38b26d27b699eacd8c6ef947ecbfb
         locations = cells_body(
           rows = nrow(df),
           columns = everything()
         )
       )
-    
+
     return(gt_table)
   } else {
     stop("Request failed with status code ", status_code(response))
