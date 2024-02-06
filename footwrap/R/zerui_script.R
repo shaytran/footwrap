@@ -8,10 +8,32 @@ library(dplyr)
 library(gt)
 library(roxygen2)
 
+# Users need to set their personal API key as environment variable named "RAPID_API", 
+# then they can use this to retrieve the API key.
+apikey <- Sys.getenv("RAPID_API")
 
-########## New version of getLeagueId
-# Helper function: get league Id by name
-getLeagueId <- function(league, apikey) {
+#' Retrieve League Information by Name
+#'
+#' This function queries the API Sports Football API to retrieve information
+#' about a football league by its given name. It constructs a query, sends a
+#' GET request to the API, and returns a dataframe with league details if
+#' the request is successful. Users can use this function to obtain league ID 
+#' for parameter in other functions.
+#'
+#' @param league A string specifying the name of the league to be queried.
+#' @param apikey A string representing the API key required for authentication
+#'        with the API Sports Football API.
+#'
+#' @return A dataframe containing the league information if the request is
+#'         successful. Each row represents a league, and columns include details
+#'         such as league id, name, and other relevant information provided by the API.
+#'
+#' @import httr
+#' @import jsonlite
+#' @examples
+#' league_info <- getLeagueInfo("Premier League", apikey)
+#'
+getLeagueInfo <- function(league, apikey) {
   
   # Construct the URL with query parameters
   url <- paste0("https://v3.football.api-sports.io/leagues?",
@@ -39,15 +61,25 @@ getLeagueId <- function(league, apikey) {
     stop("Request failed with status code ", status_code(response))
   }
 }
-# Example Usage
-getLeagueId("Premier League", "c2fc2c53bc1c1a2a3b15124124996cbd")
-getLeagueId("World Cup", "c2fc2c53bc1c1a2a3b15124124996cbd")
 
 
 
-
-
-# Helper function: get team id by name
+#' Retrieve Team ID by Name
+#'
+#' This function queries the API Sports Football API to retrieve the ID
+#' of a football team by its name. It sends a GET request with the team name
+#' as a query parameter and returns the team ID if the request is successful.
+#' This is a helper function for other functions taking team Id as parameter.
+#'
+#' @param team A string specifying the name of the team to be queried.
+#' @param apikey A string representing the API key required for authentication
+#'        with the API Sports Football API.
+#'
+#' @return An integer representing the team ID if the request is successful.
+#'
+#' @examples
+#' getTeamId("Manchester United", apikey)
+#' 
 getTeamId <- function(team, apikey) {
   
   # Construct the URL with query parameters
@@ -75,9 +107,6 @@ getTeamId <- function(team, apikey) {
     stop("Request failed with status code ", status_code(response))
   }
 }
-# Example Usage
-getTeamId('Manchester United', 'c2fc2c53bc1c1a2a3b15124124996cbd')
-getTeamId("Paris Saint Germain", 'c2fc2c53bc1c1a2a3b15124124996cbd')
 
 
 
@@ -181,9 +210,6 @@ getTeamStatistics <- function(league, season, team, apikey) {
   }
 }
 
-# Example Usage
-getTeamStatistics(39, 2019, "Manchester United", 'c2fc2c53bc1c1a2a3b15124124996cbd')
-
 
 
 
@@ -248,7 +274,6 @@ searchPlayer <- function(name, team, apikey) {
   }
 }
 
-searchPlayer("Neymar", "Paris Saint Germain", 'c2fc2c53bc1c1a2a3b15124124996cbd')
 
 
 
@@ -347,25 +372,3 @@ getPlayerStatistics <- function(id, season, apikey) {
     stop("Request failed with status code ", status_code(response))
   }
 }
-
-# Example Usage
-getPlayerStatistics(276, 2019, 'c2fc2c53bc1c1a2a3b15124124996cbd')
-
-
-
-# test
-url <- "https://v3.football.api-sports.io/players?team=85&search=neymar"
-
-url <- "https://v3.football.api-sports.io/teams?name=manchester+united"
-
-url <- "https://v3.football.api-sports.io/teams/statistics?league=39&team=33&season=2019"
-
-headers <- c(
-  'x-rapidapi-host' = 'v3.football.api-sports.io',
-  'x-rapidapi-key' = 'c2fc2c53bc1c1a2a3b15124124996cbd'
-)
-response <- GET(url, add_headers(.headers=headers))
-raw_data <- content(response, "text", encoding = 'UTF-8')
-jsonData <- fromJSON(raw_data)
-response <- jsonData$response
-response <- data.frame(response)
