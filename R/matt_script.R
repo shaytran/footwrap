@@ -6,7 +6,22 @@ library(tidyr)
 library(testthat)
 
 # HELPER FUNCTION
-
+#' Make API Request
+#'
+#' This helper function sends a GET request to a specified URL with given query parameters and headers,
+#' then processes the response into a dataframe.
+#'
+#' @param url The API endpoint URL.
+#' @param queryString A list of query parameters for the API request.
+#' @param api_key The API key for authenticating the request to RAPID-API.
+#' @return A dataframe with the response data.
+#' @examples
+#' \dontrun{
+#' makeApiRequest("https://api-football-v1.p.rapidapi.com/v3/leagues", list(country="England"), "your_api_key")
+#' }
+#' @export
+#' @importFrom httr VERB content_type add_headers content
+#' @importFrom jsonlite fromJSON
 makeApiRequest <- function(url, queryString, api_key) {
   
   # Make the GET request to the specified URL with given query parameters and headers
@@ -26,7 +41,20 @@ makeApiRequest <- function(url, queryString, api_key) {
 }
 
 # TOP SCORER, TOP ASSISTS
-
+#' Get Top Scorers
+#'
+#' Retrieves the top scorers from a specified league and season.
+#'
+#' @param league The league ID for which to retrieve top scorers.
+#' @param season The season for which to retrieve top scorers.
+#' @param api_key The API key for RAPID-API access.
+#' @return A dataframe listing top scorers including player name, nationality, position, and statistics.
+#' @examples
+#' \dontrun{
+#' getTopScorers(39, 2020, "your_api_key")
+#' }
+#' @export
+#' @importFrom dplyr select unnest
 getTopScorers <- function(league, season, api_key) {
   
   # Specific url to request
@@ -52,6 +80,20 @@ getTopScorers <- function(league, season, api_key) {
   return(df_unnested)
 }
 
+#' Get Top Assists
+#'
+#' Retrieves the top assist providers from a specified league and season.
+#'
+#' @param league The league ID for which to retrieve top assists.
+#' @param season The season for which to retrieve top assists.
+#' @param api_key The API key for RAPID-API access.
+#' @return A dataframe listing top assist providers including player name, nationality, position, and statistics.
+#' @examples
+#' \dontrun{
+#' getTopAssists(39, 2020, "your_api_key")
+#' }
+#' @export
+#' @importFrom dplyr select unnest
 getTopAssists <- function(league, season, api_key) {
   
   # Specific url to request
@@ -78,7 +120,20 @@ getTopAssists <- function(league, season, api_key) {
 }
 
 # FIXTURES
-
+#' Get Football Fixtures
+#'
+#' Retrieves football fixtures for a specified league and season.
+#'
+#' @param league The league ID for which to retrieve fixtures.
+#' @param season The season for which to retrieve fixtures.
+#' @param api_key The API key for RAPID-API access.
+#' @return A dataframe of football fixtures including dates, teams, and scores.
+#' @examples
+#' \dontrun{
+#' getFootballFixtures(39, 2020, "your_api_key")
+#' }
+#' @export
+#' @importFrom dplyr select
 getFootballFixtures <- function(league, season, api_key) {
   
   # Specific url to request
@@ -102,7 +157,20 @@ getFootballFixtures <- function(league, season, api_key) {
 }
 
 # LEAGUE STANDINGS
-
+#' Get Football Standings
+#'
+#' Retrieves the standings for a specified league and season.
+#'
+#' @param league The league ID for which to retrieve standings.
+#' @param season The season for which to retrieve standings.
+#' @param api_key The API key for RAPID-API access.
+#' @return A dataframe of league standings including team names, ranks, and points.
+#' @examples
+#' \dontrun{
+#' getFootballStandings(39, 2020, "your_api_key")
+#' }
+#' @export
+#' @importFrom dplyr select
 getFootballStandings <- function(league, season, api_key) {
   
   # Specific url to request
@@ -132,7 +200,19 @@ getFootballStandings <- function(league, season, api_key) {
 }
 
 # TRANSFERS
-
+#' Get Team Transfers
+#'
+#' Retrieves transfer information for a specified team.
+#'
+#' @param team The team ID for which to retrieve transfer information.
+#' @param api_key The API key for RAPID-API access.
+#' @return A dataframe of team transfers including player names, transfer dates, and transfer details.
+#' @examples
+#' \dontrun{
+#' getTeamTransfers(33, "your_api_key")
+#' }
+#' @export
+#' @importFrom dplyr select mutate arrange unnest
 getTeamTransfers <- function(team, api_key) {
     
     url <- "https://api-football-v1.p.rapidapi.com/v3/transfers"
