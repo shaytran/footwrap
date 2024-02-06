@@ -56,7 +56,7 @@ jobs:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-r-${{ hashFiles('**/DESCRIPTION') }}
 
-    # Install dependencies, including devtools
+    # Install dependencies
     - name: Install dependencies
       run: |
         Rscript -e 'install.packages("remotes")'

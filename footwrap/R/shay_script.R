@@ -1,4 +1,9 @@
 # Load libraries
+install.packages("httr")
+install.packages("tidyverse")
+install.packages("ggplot2")
+install.packages("jsonlite")
+
 library(httr)
 library(tidyverse)
 library(ggplot2)
