@@ -2,6 +2,7 @@ library(testthat)
 
 # Setting the API key from environment variable
 my_key <- Sys.getenv("FOOTBALL_API")
+source("../../R/shay_script.R")
 
 # Test for venue function
 test_that("GetBiggestVenues returns the correct structure", {
