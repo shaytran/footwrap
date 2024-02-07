@@ -1,20 +1,40 @@
 library(testthat)
 
-source("../../R/shay_script.R")
+# Setting the API key from environment variable
+my_key <- Sys.getenv("FOOTBALL_API")
 
-# Test Cases
-test_that("GetBiggestVenues returns correct ggplot object", {
-  result <- GetBiggestVenues("England", 5, "mock_api_key")
-  expect_is(result, "ggplot")
+# Test for venue function
+test_that("GetBiggestVenues returns the correct structure", {
+  api_key <- my_key
+  country_name <- "Brazil"
+  top_venues <- 5 # Example number
+
+  result <- GetBiggestVenues(country_name, top_venues, api_key)
+
+  # Expect that the result is a ggplot object
+  expect_true(is.ggplot(result))
+
 })
 
-test_that("GetCoachInfo returns correct data frame", {
-  result <- GetCoachInfo("team_id_example", "mock_api_key")
-  expect_is(result, "data.frame")
-  expect_equal(ncol(result), 8) # Check for 8 columns
+# Test for Coach function
+test_that("GetCoachInfo successfully returns a gt table", {
+  api_key <- my_key
+  team_id <- "40" # Example team ID for testing
+
+  result <- GetCoachInfo(team_id, api_key)
+
+  # Check that the result is of the correct class for a gt table
+  expect_true(inherits(result, "gt_tbl"))
 })
 
-test_that("CompareTrophies returns correct ggplot object", {
-  result <- CompareTrophies("player1_id", "player2_id", "mock_api_key")
-  expect_is(result, "ggplot")
+# Test for trophy function
+test_that("CompareTrophies generates a plot", {
+  api_key <- my_key
+  player_id_1 <- "276" # Example player ID for testing
+  player_id_2 <- "260"
+
+  result <- CompareTrophies(player_id_1, player_id_2, api_key)
+
+  # Expect that the result is a ggplot object
+  expect_true(is.ggplot(result))
 })
