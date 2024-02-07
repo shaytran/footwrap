@@ -1,5 +1,5 @@
 # DATA 534 API Wrapper Project with Football RAPID-API
-[![R CI](https://github.com/shaytran/DATA534_Project_Group8/actions/workflows/r.yml/badge.svg)](https://github.com/shaytran/DATA534_Project_Group8/actions/workflows/r.yml)
+[![R CI](.github/workflows/r.yaml)
 
 # footwrap
 
