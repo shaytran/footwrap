@@ -55,6 +55,7 @@ jobs:
             any::roxygen2
             any::testthat
             any::webmockr
+            any::ggthemes
 
 
       - name: Checkout repository
