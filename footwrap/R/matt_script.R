@@ -5,8 +5,6 @@ library(dplyr)
 library(tidyr)
 library(testthat)
 
-source("../../R/matt_script.R")
-
 #' Make API Request
 #'
 #' This helper function sends a GET request to a specified URL with given query parameters and headers,

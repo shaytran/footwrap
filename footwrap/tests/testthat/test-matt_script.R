@@ -2,6 +2,7 @@ library(testthat)
 
 # Setting the API key from environment variable
 my_key <- Sys.getenv("FOOTBALL_API")
+source("../../R/matt_script.R")
 
 # TopScorer functions
 test_that("getTopScorers returns a data frame with the correct number of columns", {
