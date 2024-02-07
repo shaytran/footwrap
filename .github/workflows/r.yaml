@@ -1,0 +1,64 @@
+# on:
+#   push:
+#     branches: main
+# 
+# jobs:
+#   import-data:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Set up R
+#         uses: r-lib/actions/setup-r@v2
+# 
+#       - name: Install packages
+#         uses: r-lib/actions/setup-r-dependencies@v2
+#         with:
+#           packages: |
+#             any::tidyverse 
+# 
+#       - name: Check out repository
+#         uses: actions/checkout@v3
+
+
+name: R CI
+
+on:
+  push:
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
+        
+      # Cache R package dependencies
+      - name: Cache R packages
+        uses: actions/cache@v2
+        with:
+            path: ${{ env.R_LIBS_USER }}
+            key: ${{ runner.os }}-r-${{ hashFiles('**/DESCRIPTION') }}
+    
+      - name: Install remotes package
+        run: Rscript -e 'install.packages("remotes")'
+        
+
+      - name: Install packages
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::tidyverse
+            any::dplyr
+            any::httr
+            any::jsonlite
+            any::gt
+            any::ggplot2
+            any::roxygen2
+            any::testthat
+            any::webmockr
+
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Run tests
+        run: Rscript -e 'testthat::test_dir("footwrap/tests/testthat/")'
