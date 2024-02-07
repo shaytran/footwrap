@@ -1,5 +1,0 @@
-library(httr)
-library(tidyverse)
-library(ggplot2)
-library(jsonlite)
-library(testthat)
