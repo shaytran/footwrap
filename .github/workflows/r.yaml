@@ -54,6 +54,7 @@ jobs:
             any::ggplot2
             any::roxygen2
             any::testthat
+            any::webmockr
 
 
       - name: Checkout repository
