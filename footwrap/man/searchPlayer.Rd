@@ -23,5 +23,4 @@ It retrieves the player's detailed information and displays it in a \code{gt} ta
 }
 \examples{
 searchPlayer("Neymar", "Paris Saint Germain", "<your_api_key>")
-
 }

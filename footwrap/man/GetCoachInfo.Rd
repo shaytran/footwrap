@@ -9,17 +9,15 @@ GetCoachInfo(team_id, api_key)
 \arguments{
 \item{team_id}{The ID of the team for which to fetch coach information.}
 
-\item{api_key}{The API key for accessing the data or "mock_api_key" for using mock data.}
+\item{api_key}{The API key for accessing the data.}
 }
 \value{
 A data frame containing coach information.
 }
 \description{
 Fetches information about the coaches for a specified team. This function can
-use actual API calls or mocked data for testing when supplied with "mock_api_key"
-as the API key.
+use actual API calls.
 }
 \examples{
-# Using mock API key for demonstration; replace "mock_api_key" with your actual API key.
-GetCoachInfo("team_id_example", "mock_api_key")
+GetCoachInfo("team_id_example", "api_key")
 }

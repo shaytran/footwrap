@@ -11,17 +11,15 @@ GetBiggestVenues(country_name, top, api_key)
 
 \item{top}{The number of top venues to retrieve.}
 
-\item{api_key}{The API key for making the API call or "mock_api_key" for using mock data.}
+\item{api_key}{The API key for making the API call}
 }
 \value{
 A ggplot object visualizing the capacities of the largest venues.
 }
 \description{
 Retrieves the largest venues in a specified country. This function can
-operate with actual API calls or use mock data for testing purposes when
-supplied with "mock_api_key" as the API key.
+operate with actual API calls.
 }
 \examples{
-# Using mock API key for demonstration; replace "mock_api_key" with your actual API key.
-GetBiggestVenues("England", 5, "mock_api_key")
+GetBiggestVenues("England", 5, "api_key")
 }

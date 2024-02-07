@@ -24,5 +24,4 @@ including various statistics like appearances, goals, assists, and more.
 }
 \examples{
 getPlayerStatistics(276, 2019, 'your_api_key_here')
-  
 }
