@@ -2,8 +2,7 @@
 ![R CI](https://github.com/shaytran/DATA534_Project_Group8/actions/workflows/r.yaml/badge.svg)
 
 ## Table of Contents 📜
-- [DATA 534 API Wrapper Project with Football RAPID-API](#data-534-api-wrapper-project-with-football-rapid-api)
-- [footwrap](#footwrap)
+- [About Footwrap](#footwrap)
   - [Usage](#usage)
   - [Features](#features)
   - [Our Functions (a concise overview)](#our-functions-a-concise-overview)
