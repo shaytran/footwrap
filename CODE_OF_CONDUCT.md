@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This document provides community guidelines for contributing to the [Project Name] on GitHub. It's designed to create a welcoming and respectful environment for collaboration. By participating in this project, you agree to abide by its terms.
+This document provides community guidelines for contributing to the `footwrap` package on GitHub. It's designed to create a welcoming and respectful environment for collaboration. By participating in this project, you agree to abide by its terms.
 
 ## Our Standards
 
