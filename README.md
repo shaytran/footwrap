@@ -7,23 +7,30 @@
 
 ## Usage
 
-Before using `footwrap`, ensure you have obtained an API key from RAPID-API. This key is essential for making requests and accessing the wealth of football data available.
+Over package publically available on CRAN so you will need to install in R appropriately. Before using `footwrap`, ensure you have obtained an API key from RAPID-API. This key is essential for making requests and accessing the wealth of football data available. Once you obtain your API key, you can either save it as a variable inside of your developing environment, or save it to your global environment using:
+1. For Mac/Linux Users: `export variable_name=variable_value`
+2. For Windows Users: `[Environment]::SetEnvironmentVariable('variable_name', 'variable_value', 'User')`
 
 Here's a simple example to get you started:
 
 ```r
+install.packages('footwrap')
 library(footwrap)
+
+your_api_key <- 'your key'
 
 # Fetch top scorers from the Premier League for the 2020 season
 topScorers <- getTopScorers(39, 2020, "your_api_key")
 print(topScorers)
 ```
+In this situation, you are saving a dataframe of a league's top scorers for a given season and printing the values from the dataframe. More detailed information can be found below on eaech of our functions and how to use them.
 
 ## Features
 
 - **Comprehensive Data Access**: Fetch data on top scorers, assist providers, fixtures, standings, and team transfers with ease.
 - **User-Friendly**: Designed with simplicity in mind, enabling users to access complex data through straightforward R functions.
 - **Customizable Queries**: Tailor your data retrieval to specific leagues, seasons, and teams, according to your analytical needs.
+- **Wrangled Data**: Data is presented in a wrangled state ready for any data analysis, predictie modelling, or machine learning techniques you wish to employ.
 
 ## Contributing
 
