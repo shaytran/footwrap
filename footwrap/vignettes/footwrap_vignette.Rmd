@@ -21,20 +21,12 @@ knitr::opts_chunk$set(
 `footwrap` is an R package designed to serve as an API wrapper, allowing users to easily fetch and visualize football data from the RAPID-API. This vignette demonstrates how to use `footwrap` to access data on football teams, venues, coaches, player statistics, and compare trophies between players.
 
 ##### Getting Started
-Before we dive into the functionalities of `footwrap`, ensure you have installed and loaded the package along with its dependencies.
+Ensure that you have installed and loaded `footwrap` into your session. This will also download its dependencies as well.
 
 
 ```{r setup}
 # Load the footwrap package
 library(footwrap)
-
-# Load the necessary libraries
-library(httr)
-library(tidyverse)
-library(ggplot2)
-library(jsonlite)
-library(dplyr)
-library(gt)
 ```
 
 ##### Exploring the Functions
@@ -142,4 +134,4 @@ getLeagueInfo("Premier League", "<your_api_key>")
 
 #####Conclusion
 
-This vignette provides a brief overview of how to utilize the footwrap package to fetch and visualize football data. The package simplifies the process of accessing a wide range of football statistics and information, making it an invaluable tool for football enthusiasts and researchers alike. Remember to keep your RAPID-API key secure and replace "your_api_key>" with your actual API key in the examples provided.
+This vignette provides a brief overview of how to utilize the footwrap package to fetch and visualize football data. The package simplifies the process of accessing a wide range of football statistics and information, making it an invaluable tool for football enthusiasts and researchers alike. **Remember to keep your RAPID-API key secure and replace "your_api_key>" with your actual API key in the examples provided.**

@@ -1,50 +1,13 @@
 ---
-title: "Untitled"
+title: "DATA 534 Presentation Demo"
 author: "Shayla Tran"
 date: "2024-02-06"
 output: html_document
 ---
 
 ```{r}
-library(httr)
-library(tidyverse)
-library(ggplot2)
-library(jsonlite)
-library(ggthemes)
-library(gt)
-# devtools::install("/Users/shaylatran/UBC MDS 23:24/DATA 534/DATA534_Project_Group8/footwrap")
-# detach("package:footwrap", unload=TRUE)
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```{r}
 library(footwrap)
+
 # Setting my API key from env variable
 api_key <- Sys.getenv("FOOTBALL_API")
 ```
@@ -56,7 +19,6 @@ GetBiggestVenues("England", 10, api_key)
 ```{r, fig.width = 10, warning=FALSE}
 CompareTrophies("276", "260", api_key)
 ```
-
 
 ```{r}
 GetCoachInfo("33", api_key)
