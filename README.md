@@ -2,7 +2,7 @@
 ![R CI](https://github.com/shaytran/DATA534_Project_Group8/actions/workflows/r.yaml/badge.svg)
 
 ## Table of Contents 📜
-- [About Footwrap](#footwrap)
+- [About footwrap](#footwrap)
   - [Usage](#usage)
   - [Features](#features)
   - [Our Functions (a concise overview)](#our-functions-a-concise-overview)
