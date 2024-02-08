@@ -1,9 +1,13 @@
 Package: footwrap
-Title: What the Package Does (One Line, Title Case)
+Title: A lightweight API wrapper for Rapid API Football
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+    person("Shayla", "Tran", , "shaylaannatran@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID")),
+    person("Mmatthew", "Angoh", , "mattangoh@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID")),
+    person("Zerui", "Zhang", , "first.last@example.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID")),
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
