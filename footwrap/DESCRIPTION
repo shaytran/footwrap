@@ -8,7 +8,7 @@ Authors@R:
            comment = c(ORCID = "YOUR-ORCID-ID")),
     person("Zerui", "Zhang", , "first.last@example.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID")),
-Description: What the package does (one paragraph).
+Description: footwrap is an R package designed to facilitate easy access to football data through the RAPID-API. It serves as an API wrapper, simplifying the process of fetching detailed information on football leagues, teams, fixtures, player statistics, and much more. Whether you're an enthusiast looking to analyze your favorite league, or a data scientist seeking to perform comprehensive football data analyses, footwrap provides the necessary tools to gather the data you need. We understand that one of the most challenging parts of the data analytics and model building process is the data wrangling. Thus, as a tool made by data scientsts for data scientists, we hope that you will see the ease of use of our footwrap and its potential as a key pipelining tool in the football analytics and model creation process.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
