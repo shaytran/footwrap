@@ -110,7 +110,7 @@ searchPlayer(name = "Ronaldo", team = "Juventus", apikey = "<your_api_key>")
 topScorers <- getTopScorers(39, 2020, "<your_api_key>")
 ```
 
-**7. Fetching Top Assist Providers **
+**7. Fetching Top Assist Providers**
 
 Similarly, `getTopAssists` focuses on the creative talents in the league, fetching data about players who provided the most assists.
 ```{r}
@@ -135,7 +135,7 @@ fixtures <- getFootballFixtures(39, 2020, "<your_api_key>")
 standings <- getFootballStandings(39, 2020, "<your_api_key>")
 ```
 
-**10. Analyzing Team Transfers **
+**10. Analyzing Team Transfers**
 
 Lastly, `getTeamTransfers` delves into the transfer market, offering data on player movements across teams, which is crucial for understanding team strategies and player careers.
 ```{r}
