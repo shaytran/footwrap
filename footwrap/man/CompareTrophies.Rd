@@ -11,17 +11,15 @@ CompareTrophies(player_id_1, player_id_2, api_key)
 
 \item{player_id_2}{The ID of the second player.}
 
-\item{api_key}{The API key used for making the API call or "mock_api_key" for using mock data.}
+\item{api_key}{The API key used for making the API call.}
 }
 \value{
 A ggplot object visualizing the number of trophies won by each player.
 }
 \description{
 Compares the number of trophies won by two players. This function can operate
-with actual API calls or use mock data for testing purposes when supplied with
-"mock_api_key" as the API key.
+with actual API calls.
 }
 \examples{
-# Using mock API key for demonstration; replace "mock_api_key" with your actual API key.
 CompareTrophies("player1_id", "player2_id", "mock_api_key")
 }

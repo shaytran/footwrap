@@ -12,11 +12,7 @@ library(gt)
 #' This function queries the API Sports Football API to retrieve information
 #' about a football league by its given name. It constructs a query, sends a
 #' GET request to the API, and returns a dataframe with league details if
-<<<<<<< HEAD
 #' the request is successful. Users can use this function to obtain league ID
-=======
-#' the request is successful. Users can use this function to obtain league ID 
->>>>>>> 156c350277e38b26d27b699eacd8c6ef947ecbfb
 #' for parameter in other functions.
 #'
 #' @param league A string specifying the name of the league to be queried.
@@ -29,21 +25,11 @@ library(gt)
 #'
 #' @examples
 #' getLeagueInfo("Premier League", apikey)
-<<<<<<< HEAD
 #'
 #' @export
 #'
 getLeagueInfo <- function(league, apikey) {
 
-
-=======
-#' 
-#' @export
-#' 
-getLeagueInfo <- function(league, apikey) {
-
-  
->>>>>>> 156c350277e38b26d27b699eacd8c6ef947ecbfb
   # Construct the URL with query parameters
   url <- paste0("https://v3.football.api-sports.io/leagues?",
                 "name=", tolower(gsub(" ", "+", league, fixed = TRUE)))
@@ -87,15 +73,9 @@ getLeagueInfo <- function(league, apikey) {
 #'
 #' @examples
 #' getTeamId("Manchester United", apikey)
-<<<<<<< HEAD
 #'
 #' @export
 #'
-=======
-#' 
-#' @export
-#' 
->>>>>>> 156c350277e38b26d27b699eacd8c6ef947ecbfb
 
 getTeamId <- function(team, apikey) {
 
@@ -232,11 +212,6 @@ getTeamStatistics <- function(league, season, team, apikey) {
         locations = cells_body(
           columns = everything()
         ))
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> 156c350277e38b26d27b699eacd8c6ef947ecbfb
     return(gt_table)
   } else {
     stop("Request failed with status code ", status_code(response))
@@ -261,11 +236,6 @@ getTeamStatistics <- function(league, season, team, apikey) {
 #'
 #' @examples
 #' searchPlayer("Neymar", "Paris Saint Germain", "<your_api_key>")
-<<<<<<< HEAD
-#'
-=======
-#' 
->>>>>>> 156c350277e38b26d27b699eacd8c6ef947ecbfb
 searchPlayer <- function(name, team, apikey) {
 
   # Get team id by name
@@ -347,11 +317,6 @@ searchPlayer <- function(name, team, apikey) {
 #'
 #' @examples
 #' getPlayerStatistics(276, 2019, 'your_api_key_here')
-<<<<<<< HEAD
-#'
-=======
-#'   
->>>>>>> 156c350277e38b26d27b699eacd8c6ef947ecbfb
 getPlayerStatistics <- function(id, season, apikey) {
 
   # Construct the URL with query parameters
@@ -430,11 +395,7 @@ getPlayerStatistics <- function(id, season, apikey) {
         heading.background.color = "#1b2668"
       ) %>%
       tab_style(
-<<<<<<< HEAD
         style = cell_fill(color = "#FFD700"),
-=======
-        style = cell_fill(color = "#FFD700"), 
->>>>>>> 156c350277e38b26d27b699eacd8c6ef947ecbfb
         locations = cells_body(
           rows = nrow(df),
           columns = everything()
