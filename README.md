@@ -1,6 +1,17 @@
 # DATA 534 API Wrapper Project with Football RAPID-API
 ![R CI](https://github.com/shaytran/DATA534_Project_Group8/actions/workflows/r.yaml/badge.svg)
 
+## Installation
+
+
+The package is publically available off of our github repository and so you will need to install in R appropriately using `remotes::install_github("shaytran/footwrap@package-installation")`. Run these set of code to install our package directly off of Github!
+
+```r
+# install.packages(remotes) # if you do not have remotes installed yet 
+library(remotes)
+remotes::install_github("shaytran/footwrap@package-installation")
+```
+
 ## Table of Contents 📜
 - [About footwrap](#footwrap)
   - [Usage](#usage)
@@ -17,7 +28,7 @@
 
 ## Usage
 
-The package is publically available and so you will need to install in R appropriately using `remotes::install_github("shaytran/footwrap@package-installation")`. Additionally, before using `footwrap`, ensure you have obtained an API key from RAPID-API. This key is essential for making requests and accessing the wealth of football data available. Once you obtain your API key, you can either save it as a variable inside of your developing environment, or save it to your global environment using:
+Before using `footwrap`, ensure you have obtained an API key from RAPID-API. This key is essential for making requests and accessing the wealth of football data available. Once you obtain your API key, you can either save it as a variable inside of your developing environment, or save it to your global environment using:
 1. For Mac/Linux Users: `export variable_name=variable_value`
 2. For Windows Users: `[Environment]::SetEnvironmentVariable('variable_name', 'variable_value', 'User')`
 
