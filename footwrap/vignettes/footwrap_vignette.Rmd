@@ -134,4 +134,4 @@ getLeagueInfo("Premier League", "<your_api_key>")
 
 #####Conclusion
 
-This vignette provides a brief overview of how to utilize the footwrap package to fetch and visualize football data. The package simplifies the process of accessing a wide range of football statistics and information, making it an invaluable tool for football enthusiasts and researchers alike. **Remember to keep your RAPID-API key secure and replace "your_api_key>" with your actual API key in the examples provided.**
+This vignette provides a brief overview of how to utilize the footwrap package to fetch and visualize football data. The package simplifies the process of accessing a wide range of football statistics and information, making it an invaluable tool for football enthusiasts and researchers alike. **Remember to keep your RAPID-API key secure and replace "<your_api_key>" with your actual API key in the examples provided.**
