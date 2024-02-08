@@ -3,7 +3,7 @@ library(webmockr)
 
 # Setting the API key from environment variable
 mock_api_key <- "MOCK_API_KEY"
-source("../../R/shay_script.R") # Ensure this path correctly points to your script
+source("../../R/matt_script.R") # Ensure this path correctly points to your script
 
 # Enable webmockr to intercept HTTP requests
 webmockr::enable()
