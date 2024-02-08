@@ -17,14 +17,19 @@
 
 ## Usage
 
-Over package publically available on CRAN so you will need to install in R appropriately using `install.packages('footwrap')`. Additionally, before using `footwrap`, ensure you have obtained an API key from RAPID-API. This key is essential for making requests and accessing the wealth of football data available. Once you obtain your API key, you can either save it as a variable inside of your developing environment, or save it to your global environment using:
+The package is publically available and so you will need to install in R appropriately using `remotes::install_github("shaytran/footwrap@package-installation")`. Additionally, before using `footwrap`, ensure you have obtained an API key from RAPID-API. This key is essential for making requests and accessing the wealth of football data available. Once you obtain your API key, you can either save it as a variable inside of your developing environment, or save it to your global environment using:
 1. For Mac/Linux Users: `export variable_name=variable_value`
 2. For Windows Users: `[Environment]::SetEnvironmentVariable('variable_name', 'variable_value', 'User')`
 
 Here's a simple example to get you started. Note that more detailed information can be found below or in our vignettes on each of our functions and how to use them:
 
 ```r
-install.packages('footwrap')
+# downloading package
+# install.packages(remotes) # if you do not have remotes installed yet 
+library(remotes)
+remotes::install_github("shaytran/footwrap@package-installation")
+
+# load footwarap package
 library(footwrap)
 
 your_api_key <- 'your key'
