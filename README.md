@@ -1,6 +1,17 @@
 # DATA 534 API Wrapper Project with Football RAPID-API
 ![R CI](https://github.com/shaytran/DATA534_Project_Group8/actions/workflows/r.yaml/badge.svg)
 
+# Table of Contents
+- [DATA 534 API Wrapper Project with Football RAPID-API](#data-534-api-wrapper-project-with-football-rapid-api)
+- [footwrap](#footwrap)
+  - [Usage](#usage)
+  - [Features](#features)
+  - [Our Functions (a concise overview)](#our-functions-a-concise-overview)
+  - [Contributing](#contributing)
+  - [Code of Conduct](#code-of-conduct)
+  - [License](#license)
+  - [Acknowledgments](#acknowledgments)
+
 # footwrap
 
 `footwrap` is an R package designed to facilitate easy access to football data through the RAPID-API. It serves as an API wrapper, simplifying the process of fetching detailed information on football leagues, teams, fixtures, player statistics, and much more. Whether you're an enthusiast looking to analyze your favorite league, or a data scientist seeking to perform comprehensive football data analyses, `footwrap` provides the necessary tools to gather the data you need. We understand that one of the most challenging parts of the data analytics and model building process is the data wrangling. Thus, as a tool made by data scientsts for data scientists, we hope that you will see the ease of use of our `footwrap` and its potential as a key pipelining tool in the football analytics and model creation process.
