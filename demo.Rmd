@@ -6,6 +6,11 @@ output: html_document
 ---
 
 ```{r}
+library(remotes)
+remotes::install_github("shaytran/footwrap@package-installation", force=TRUE) # Already installed latest version, so force
+```
+
+```{r}
 library(footwrap)
 
 # Setting my API key from env variable
@@ -13,21 +18,16 @@ api_key <- Sys.getenv("FOOTBALL_API")
 ```
 
 ```{r}
-GetBiggestVenues("England", 10, api_key)
+GetBiggestVenues("Spain", 5, api_key)
 ```
 
 ```{r, fig.width = 10, warning=FALSE}
-CompareTrophies("276", "260", api_key)
+CompareTrophies("250", "262", api_key)
 ```
 
 ```{r}
-GetCoachInfo("33", api_key)
+GetCoachInfo("40", api_key)
 ```
-
-
-
-
-
 
 
 

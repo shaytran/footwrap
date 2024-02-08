@@ -72,7 +72,7 @@ getTopScorers <- function(league, season, api_key) {
 
   # Select relevant columns from dataframe
   df_unnested <- select(df_unnested, player.firstname, player.lastname, player.nationality, games.position, team.name,
-                        league.name, games.appearences, goals.total, goals.assists, shots.total, shots.on)
+                        league.name, games.appearances, goals.total, goals.assists, shots.total, shots.on)
 
   # Return the unnested data frame
   return(df_unnested)
@@ -111,7 +111,7 @@ getTopAssists <- function(league, season, api_key) {
 
   # Select relevant columns from dataframe
   df_unnested <- select(df_unnested, player.firstname, player.lastname, player.nationality, games.position, team.name, league.name,
-                        games.appearences, goals.assists, goals.total, passes.total, passes.key, passes.accuracy)
+                        games.appearances, goals.assists, goals.total, passes.total, passes.key, passes.accuracy)
 
   # Return the unnested data frame
   return(df_unnested)
@@ -146,7 +146,7 @@ getFootballFixtures <- function(league, season, api_key) {
   # Call ApiRequest helper function to obtain dataframe
   df_data <- makeApiRequest(url, queryString, api_key)
 
-  # Select relevant columns from dataframe
+  #Select relevant columns from dataframe
   df_data <- select(df_data, league.name, fixture.venue.name, fixture.date,
                            fixture.status.long, teams.home.name, teams.away.name,
                            score.fulltime.home, score.fulltime.away)
@@ -192,7 +192,8 @@ getFootballStandings <- function(league, season, api_key) {
 
   # Select relevant columns from dataframe
   standings_df <- select(standings_df, rank, team.name, group, description, form, points, all.played,
-                         all.win, all.draw, all.lose, all.goals.for, all.goals.against, goalsDiff)
+                        all.win, all.draw, all.lose, all.goals.for, all.goals.against, goalsDiff)
+
 
   return(standings_df)
 }
