@@ -172,7 +172,7 @@ Participation in the `footwrap` project is governed by our `Code of Conduct`. Pl
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ## Acknowledgments
 
